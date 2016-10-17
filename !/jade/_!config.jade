@@ -1,0 +1,162 @@
+//-PAGES
+block page
+case page
+	when 'index'
+		title = 'home'
+	when 'about'
+		title = 'about'
+	when 'blog'
+		title = 'blog'
+	when 'contact'
+		title = 'contact'
+	when 'single-post'
+		title = 'single post'
+	when 'single-work'
+		title = 'single work'
+	default
+		title = 'title'
+
+//-URLS
+- var url = {}
+- url['img'] = 'img/'
+- url['uploads'] = url['img'] + 'uploads/'
+- url['portfolio'] = url['uploads'] + 'portfolio/'
+- url['posts'] = url['uploads'] + 'posts/'
+- url['team'] = url['uploads'] + 'team/'
+- url['users'] = url['uploads'] + 'users/'
+
+	
+//-LOGO**********************************************
+- var rLogo = []
+- rLogo.url = url['img']
+- rLogo.push({alt:'logo', img:'logo.png', img2x:'logo@2x.png'})
+
+//-NAV***********************************************
+- var nav = []
+- nav.push({href:'index.html', title:'Home', page:'index'})
+//- nav.push({href:'work.html', title:'Work', page:'work'})
+- nav.push({href:'about.html', title:'About', page:'about'})
+- nav.push({href:'blog.html', title:'Blog', page:'blog'})
+//- nav.push({href:'services.html', title:'Services', page:'services'})
+- nav.push({href:'contact.html', title:'Contact', page:'contact'})
+
+//-PORTFOLIO*****************************************
+//-FILTER
+- var filter = []
+- filter.push({name:'Web Design', id:'web-desing'})			//0
+- filter.push({name:'Illustration', id:'illustration'})		//1
+- filter.push({name:'Photography', id:'photography'})		//2
+- filter.push({name:'Wallpapers', id:'wallpapers'})			//3
+- filter.push({name:'Brochures', id:'brochures'})			//4
+//-PORTFOLIO
+- var portfolio = []
+- portfolio.push({category:filter[0].id, src:'1.jpg', alt:'item 1'})
+- portfolio.push({category:filter[1].id, src:'2.jpg', alt:'item 2'})
+- portfolio.push({category:filter[2].id, src:'3.jpg', alt:'item 3'})
+- portfolio.push({category:filter[3].id, src:'4.jpg', alt:'item 4'})
+- portfolio.push({category:filter[4].id, src:'5.jpg', alt:'item 5'})
+- portfolio.push({category:filter[0].id, src:'6.jpg', alt:'item 6'})
+- portfolio.push({category:filter[1].id, src:'7.jpg', alt:'item 7'})
+- portfolio.push({category:filter[2].id, src:'8.jpg', alt:'item 8'})
+- portfolio.push({category:filter[3].id, src:'9.jpg', alt:'item 9'})
+- portfolio.push({category:filter[4].id, src:'10.jpg', alt:'item 10'})
+- portfolio.push({category:filter[0].id, src:'11.jpg', alt:'item 11'})
+- portfolio.push({category:filter[2].id, src:'12.jpg', alt:'item 12'})
+
+//-POSTS*********************************************
+//-CONSTRUCTORS
+//-standart-post
+- function StandartPost(title, text, date, comments, objImg){
+-	this.title=title;
+-	this.text=text;
+-	this.date=date;
+-	this.comments=comments;
+-	this.img=objImg;
+-}
+- StandartPost.prototype.clsName = 'standart-post'
+//-media-post
+- function MediaPost(title, text, date, comments, src){
+-	this.title=title;
+-	this.text=text;
+-	this.date=date;
+-	this.comments=comments;
+-	this.src=src;
+-}
+- MediaPost.prototype.clsName = 'media-post'
+//-gallery-post
+- function GalleryPost(title, text, date, comments, arrObjsOfImgs){
+-	this.title=title;
+-	this.text=text;
+-	this.date=date;
+-	this.comments=comments;
+-	this.images=arrObjsOfImgs;
+-}
+- GalleryPost.prototype.clsName = 'gallery-post'
+//-img-post
+- function ImgPost(src, srcBig, alt){
+-	this.src=src;
+-	this.srcBig=srcBig;
+-	this.alt=alt;
+-}
+- ImgPost.prototype.clsName = 'img-post'
+//-link-post
+- function LinkPost(href,text){
+-	this.href=href;
+-	this.text=text;
+-}
+- LinkPost.prototype.clsName = 'link-post'
+//-quote-post
+- function QuotePost(author,text){
+-	this.author=author;
+-	this.text=text;
+-}
+- QuotePost.prototype.clsName = 'quote-post'
+//-aside-post
+- function AsidePost(title,text){
+-	this.title=title;
+-	this.text=text;
+-}
+- AsidePost.prototype.clsName = 'aside-post'
+//-POSTS
+//-standart-post
+- var sPost1 = new StandartPost('Standard post format 1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Dec 19,2013', '3 comments', {src:'s1.jpg', alt:'item 1'})
+- var sPost2 = new StandartPost('Standard post format 2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Dec 19,2013', '3 comments', {src:'s2.jpg', alt:'item 2'})
+- var sPost3 = new StandartPost('Standard post format 3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Dec 19,2013', '3 comments', {src:'s3.jpg', alt:'item 3'})
+- var sPost4 = new StandartPost('Standard post format 4', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Dec 19,2013', '3 comments', {src:'s4.jpg', alt:'item 4'})
+//-media-post
+- var mPost1 = new MediaPost('Self-hosted video post 1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Dec 19,2013', '3 comments', '<iframe width="560" height="315" src="//www.youtube.com/embed/yltlJEdSAHw?rel=0" frameborder="0" allowfullscreen></iframe>')
+- var mPost2 = new MediaPost('Self-hosted video post 2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Dec 19,2013', '3 comments', '<iframe src="//player.vimeo.com/video/78469853?color=ffffff" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>')
+//-gallery-post
+- var gPost1 = new GalleryPost('Gallery Post Example 1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Dec 19,2013', '3 comments', [{src:'g1.jpg', alt:'item 1'}, {src:'g2.jpg', alt:'item 2'}])
+- var gPost2 = new GalleryPost('Gallery Post Example 2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', 'Dec 19,2013', '3 comments', [{src:'g2.jpg', alt:'item 2'}, {src:'g1.jpg', alt:'item 1'}])
+//-img-post
+- var iPost1 = new ImgPost('i1.png', 'i1b.png', 'item 1')
+- var iPost2 = new ImgPost('i2.jpg', 'i2b.jpg', 'item 2')
+//-link-post
+- var lPost1 = new LinkPost('https://www.google.com.ua/', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit 1')
+- var lPost2 = new LinkPost('https://www.google.com.ua/', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit 2')
+//-quote-post
+- var qPost1 = new QuotePost('Albert Einstein', 'Logic will get you from A to B. Imagination will take you everywhere.')
+//-aside-post
+- var aPost1 = new AsidePost('Aside Post Format', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.')
+//-OUTPUT OF POSTS
+- var posts=[];
+- posts.push(gPost1)
+- posts.push(lPost1)
+- posts.push(iPost1)
+- posts.push(qPost1)
+- posts.push(gPost2)
+- posts.push(iPost2)
+- posts.push(mPost1)
+- posts.push(sPost1)
+- posts.push(sPost2)
+- posts.push(sPost3)
+- posts.push(lPost2)
+- posts.push(sPost4)
+- posts.push(aPost1)
+- posts.push(mPost2)
+
+//-ABOUT*********************************************
+- var users = []
+- users.push({name:'John Smith', career:'Web Developer at ABC', avatar:'1.jpg', alt:'avatar', text:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'})
+- users.push({name:'Lori Poule', career:'Designer at DEF', avatar:'1.jpg', alt:'avatar', text:'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'})

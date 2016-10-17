@@ -1,0 +1,77 @@
+// 001 - BOX-MODEL, HTML & BODY
+.mm-active{
+	&html, body,
+	#sb-site, .sb-site,
+	.sb-slidebar {//Set box model to prevent any user added margins or paddings from altering the widths or heights.
+		margin: 0;
+		padding: 0;
+		.box-sizing(border-box);
+	}
+}
+
+html, body{overflow-x: hidden;}//Stops horizontal scrolling.
+
+body{
+	position: relative;//Required for static Slidebars to function properly.
+	overflow-y: scroll;
+}
+
+html.sb-lock.sb-active:not(.sb-static){overflow: hidden;}//Prevent site from scrolling when a Slidebar is open, except when static Slidebars are only available.
+
+// 002 - SITE
+.mm-active{
+	#sb-site, .sb-site {
+		position: relative;
+		z-index:2;
+		background:@contentBg;
+	}
+}
+
+// 003 - SLIDEBAR
+.mm-active{
+	.sb-slidebar {
+		position: fixed;
+		overflow-x: hidden;
+		overflow-y: scroll;
+		visibility: hidden; /* Initially hide the Slidebars. */
+		height: 100%;
+		background:@sidebarBg;
+		z-index:2;
+	}
+	.sidebar{
+		position:absolute;
+		width:100%;
+	}
+	.bg{display:none;}
+}
+
+.sb-left {left: 0;}//Set Slidebar to the left.
+
+.sb-right {right: 0;}//Set Slidebar to the right.
+
+html.sb-static .sb-slidebar,
+.sb-slidebar.sb-static{//Makes Slidebars scroll naturally with the site, and unfixes them for Android Browser < 3 and iOS < 5.
+	position: absolute;
+	height: 100%;
+}
+
+.sb-slidebar.sb-active {visibility: visible;}//Makes Slidebars visibile when open.
+
+// 004 - ANIMATION
+.sb-slide,
+#sb-site, .sb-site,
+.sb-slidebar {
+	-webkit-transition: -webkit-transform 400ms ease;
+	   -moz-transition: -moz-transform 400ms ease;
+	     -o-transition: -o-transform 400ms ease;
+	        transition: transform 400ms ease;
+	-webkit-transition-property: -webkit-transform, left, right; // Add left/right for Android < 4.4.
+	-webkit-backface-visibility: hidden; // Prevents flickering. This is non essential, and you may remove it if your having problems with fixed background images in Chrome.
+}
+#sb-site.no-bg{
+	background: transparent;
+	z-index: 1;
+}
+
+// 005 - HELPER CLASSES
+.sb-hide {display: none;}

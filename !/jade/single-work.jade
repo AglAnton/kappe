@@ -1,0 +1,74 @@
+extends _layout
+
+block page
+	- var page = 'single-work'
+
+block content
+
+	section.single-work.post-layout
+		.post-layout-wrap
+			.col-l
+				//POST
+				article.post
+					.slider
+						- for(var i = 0; i < 4; i++)
+							img(src=url['portfolio']+'gallery/1.jpg', alt="work")
+					header.title-h1.title-h1 Heavy Sand - Creative Photography
+					.text
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+				//RELATED PROJECTS
+				section.related-projects
+					header.title-h1 Related Projects
+					.items-wrap
+						- for(var i = 0; i < 3; i++)
+							atricle.item
+								img(src=url['portfolio']+portfolio[i].src, alt=portfolio[i].alt)
+								.hover-info
+									.info-wrap.big
+										.title-top Cool App Design
+										.title-bottom development, mobile
+										a.big-icon-button(href="single-work.html"): span.icon-right-big
+
+			.col-r
+				//PROJECT-INFO
+				section.project-info
+					header.title-h1 Project Info
+					ul.icon-sep-list
+						li
+							span.circle-icon.icon-user
+							a(href="#!") premiumlayers
+						li
+							span.circle-icon.icon-heart
+							a(href="#!") 138 likes
+						li
+							span.circle-icon.icon-calendar
+							a(href="#!") 20 june 2014
+						li
+							span.circle-icon.icon-link
+							a(href="#!") https://www.google.com.ua/
+
+				//TAGS
+				section.tags
+					header.title-h1 Tags
+					ul.items
+						each item in ['web design', 'photography', 'development', 'php', 'ecommerce', 'graphic']
+							li.item: a(href="#!")=item
+
+				//PROJECT GALLERY
+				section.project-gallery
+					header.title-h1 Project Gallery
+					.items-wrap
+						- for(var i = 0; i < 10; i++)
+							.item
+								a.item.fancybox(href=url.portfolio+portfolio[i].src, rel='group'): img(src=url.portfolio+portfolio[i].src, alt=portfolio[i].alt)
+
+				//PROJECT FEATURES
+				section.project-features
+					header.title-h1 Project Features
+					ul.icon-list
+						each item in ['Responsive Layout', 'Font Awesome Icons', 'Clean & Commented Code', 'Pixel perfect Design', 'Highly Customizable']
+							li
+								span.icon.icon-ok
+								span=item

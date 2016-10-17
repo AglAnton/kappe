@@ -1,0 +1,50 @@
+.scroll-button{
+	position:fixed;
+	right:0;
+	bottom:0;
+	width:40px;
+	height:30px;
+	cursor:pointer;
+	z-index:2;
+	background: @themeColor1 url('@{iconUrl}scrollUp.png') no-repeat;
+	.opacity(0.75);
+	&:hover{.opacity(1);}
+	display:none;
+}
+/*body-shadow*/
+.body-shadow{
+	position:fixed;
+	z-index:1000;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background: @themeColor1 url('@{iconUrl}scrollUp.png') no-repeat 50% 50%;;
+	.opacity(0.75);
+	display:none;
+
+}
+.body-shadow.active{
+	-webkit-animation: anime-body-shadow 0.15s linear 0s forwards;
+	-moz-animation:    anime-body-shadow 0.15s linear 0s forwards;
+	-o-animation:      anime-body-shadow 0.15s linear 0s forwards;
+	animation:         anime-body-shadow 0.15s linear 0s forwards;
+
+}
+/*arrow animation*/
+@-webkit-keyframes anime-body-shadow {
+	0%   {background-position: 50% 60%;}
+	100% {background-position: 50% 40%;}
+}
+@-moz-keyframes anime-body-shadow {
+	0%   {background-position: 50% 60%;}
+	100% {background-position: 50% 40%;}
+}
+@-o-keyframes anime-body-shadow {
+	0%   {background-position: 50% 60%;}
+	100% {background-position: 50% 40%;}
+}
+@keyframes anime-body-shadow {
+	0%   {background-position: 50% 60%;}
+	100% {background-position: 50% 40%;}
+}

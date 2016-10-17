@@ -1,0 +1,17 @@
+extends _layout
+
+block page
+	- var page = 'index'
+
+block content
+
+	section.portfolio.items-wrap
+		- for(var i = 0; i < 4; i++)
+			- each item in portfolio
+				article.item(data-category=item.category)
+					img(src=url.portfolio+item.src, alt=item.alt)
+					.hover-info
+						.info-wrap.big
+							.title-top Cool App Design
+							.title-bottom development, mobile
+							a.big-icon-button(href="single-work.html"): span.icon-right-big

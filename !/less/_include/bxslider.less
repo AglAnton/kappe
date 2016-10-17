@@ -1,0 +1,39 @@
+.bx-wrapper {position: relative;}
+/*preloader*/
+.bx-loading {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	min-height: 50px;
+	background: #fff url("@{iconUrl}preloader.gif") no-repeat 50% 50%;
+	z-index: 2000;
+}
+/*direction controls (next/prev)*/
+.bx-prev .slider-button{left: 0;}
+.bx-next .slider-button{right: 0;}
+/*pager*/
+.bx-default-pager{
+	position: absolute;
+	bottom:0;
+	right: 0;
+	margin:4%;
+	z-index: 100;
+}
+.bx-pager{overflow: hidden;}
+.bx-pager-item{
+	float:left;
+	margin: 3.5px;
+}
+.bx-pager-link{
+	display: block;
+	text-indent: -9999px;
+	width: 20px;
+	height: 12px;
+	background:@sidebarBg;
+	border: solid 1px @textColor;
+	.opacity(0.75);
+	&:hover, &.active{background:@themeColor1;}
+	&.active{border-color: @sidebarBg;}
+}

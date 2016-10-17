@@ -1,0 +1,130 @@
+@sidebarWidth:15.625%;
+
+//URLs
+//images
+@iconUrl:'../img/icons/';
+//fonts
+@fontello: '../fonts/fontello/';
+
+//COLORS
+@sidebarBg:#242b2e;
+@contentBg:#b3b7b8;
+@textColor:#a3a3a3;
+@themeColor1:#1ab5b3;
+@themeColor2:#68b4b2;
+
+//FUNCTIONS
+//opacity
+.opacity(@val){
+	-moz-opacity:@val;
+	opacity:@val;
+	filter: ~'alpha(opacity='@val * 100~')';
+}
+//border-radius
+.border-radius(@radius){
+	-webkit-border-radius:@radius;
+	-moz-border-radius:@radius;
+	border-radius:@radius;
+}
+//text-overflow (ellipsis)
+.text-overflow(){
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+//user-select
+.user-select(){
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+//box-sizing
+.box-sizing(@box:border-box){
+	-webkit-box-sizing:@box;
+	-moz-box-sizing:@box;
+	box-sizing:@box;
+}
+//box-shadows
+.box-shadow(@shadow){
+	-webkit-box-shadow:@shadow;
+	-moz-box-shadow:@shadow;
+	box-shadow:@shadow;
+}
+.box-2shadow(@shadow1; @shadow2){
+	-webkit-box-shadow:@shadow1, @shadow2;
+	-moz-box-shadow:@shadow1, @shadow2;
+	box-shadow:@shadow1, @shadow2;
+}
+.box-3shadow(@shadow1; @shadow2; @shadow3){
+	-webkit-box-shadow:@shadow1, @shadow2, @shadow3;
+	-moz-box-shadow:@shadow1, @shadow2, @shadow3;
+	box-shadow:@shadow1, @shadow2, @shadow3;
+}
+//background
+.background-size(@param){
+	-webkit-background-size: @param;
+	-moz-background-size: @param;
+	-o-background-size: @param;
+	background-size: @param;
+};
+.background-clip(@param){
+	-moz-background-clip: @param;
+	-webkit-background-clip: @param;
+	background-clip: @param;
+};
+//linear-gradient
+.linear-gradient-h(@startColor, @endColor, @mainColor:@startColor, @startPos:0%, @endPos:100%){
+	background: @mainColor;
+	background: -moz-linear-gradient(left,  @startColor @startPos, @endColor @endPos);
+	background: -webkit-gradient(linear, left top, right top, color-stop(@startPos, @startColor), color-stop(@endPos, @endColor));
+	background: -webkit-linear-gradient(left, @startColor @startPos, @endColor @endPos);
+	background: -o-linear-gradient(left, @startColor @startPos, @endColor @endPos);
+	background: -ms-linear-gradient(left, @startColor @startPos, @endColor @endPos);
+	background: linear-gradient(to right, @startColor @startPos, @endColor @endPos);
+	filter: ~'progid:DXImageTransform.Microsoft.gradient(startColorstr=@{startColor}, endColorstr=@{endColor},GradientType=1);'
+};
+.linear-gradient-v(@startColor, @endColor, @mainColor:@startColor, @startPos:0%, @endPos:100%){
+	background: @mainColor;
+	background: -moz-linear-gradient(top, @startColor @startPos, @endColor @endPos);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(@startPos, @startColor), color-stop(@endPos, @endColor));
+	background: -webkit-linear-gradient(top, @startColor @startPos, @endColor @endPos);
+	background: -o-linear-gradient(top, @startColor @startPos, @endColor @endPos);
+	background: -ms-linear-gradient(top, @startColor @startPos, @endColor @endPos);
+	background: linear-gradient(to bottom, @startColor @startPos, @endColor @endPos);
+	filter: ~'progid:DXImageTransform.Microsoft.gradient(startColorstr=@{startColor}, endColorstr=@{endColor},GradientType=0);'
+};
+//transition
+.transition(@params){
+	-webkit-transition: @params;
+	-moz-transition: @params;
+	-o-transition: @params;
+	transition: @params;
+}
+//transform
+.transform(@params){
+	-webkit-transform: @params;
+	-moz-transform: @params;
+	-ms-transform: @params;
+	-o-transform: @params;
+	transform: @params;
+}
+//placeholder text color
+.placeholder(@color){
+	&::-webkit-input-placeholder{color:@color;}//WebKit browsers
+	&:-moz-placeholder{color:@color;}//Mozilla Firefox 4 to 18
+	&::-moz-placeholder{color:@color;}//Mozilla Firefox 19+
+	&:-ms-input-placeholder{color:@color;}//Internet Explorer 10+
+}
+//font-face
+.font-face(@fontName, @fontFileName, @fontUrl){
+	@font-face {
+		font-family: @fontName;
+		src: url('@{fontUrl}@{fontFileName}.eot');
+		src: url('@{fontUrl}@{fontFileName}.eot?#iefix') format('embedded-opentype'),
+			 url('@{fontUrl}@{fontFileName}.woff') format('woff'),
+			 url('@{fontUrl}@{fontFileName}.ttf') format('truetype'),
+			 url('@{fontUrl}@{fontFileName}.svg#@{fontName}') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+}

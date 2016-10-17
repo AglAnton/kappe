@@ -1,0 +1,19 @@
+extends _layout
+
+block page
+	- var page = 'contact'
+
+block content
+	section.contact
+
+		//CONTACT-BLOCK
+		.contact-block
+			//CONTACT-INFO
+			.contact-info
+				header.title-h1 Get in touch with us
+				p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+			//CONTACT-FORM
+			- var header = 'Send Us A Message'
+			- var buttonValue = 'Send Now'
+			include _include/cform

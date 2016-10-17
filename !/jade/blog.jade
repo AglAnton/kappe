@@ -1,0 +1,60 @@
+extends _layout
+
+block page
+	- var page = 'blog'
+
+block content
+
+	mixin postInfo(item)
+		.post-info.post-wrap
+			header: a(href='single-post.html')=item.title
+			.text=item.text
+		.meta-data.post-wrap
+			.comments
+				span.icon.icon-comment
+				=item.comments
+			.date
+				span.icon.icon-calendar
+				=item.date
+
+	section.blog
+		.items-wrap
+			- for(var i = 0; i < 1; i++)
+				each item in posts
+					article.item(class=item.clsName)
+						case item.clsName
+
+							when 'standart-post'
+								img(src=url.posts+item.img.src, alt=item.img.alt)
+								+postInfo(item)
+
+							when 'media-post'
+								.media-wrap: !{item.src}
+								+postInfo(item)
+
+							when 'gallery-post'
+								.slider
+									each img in item.images
+										img(src=url.posts+img.src, alt=img.alt)
+								+postInfo(item)
+
+							when 'img-post'
+								img(src=url.posts+item.src, alt=item.alt)
+								a.fancybox(href=url.posts+item.srcBig).big-icon-button: span.icon-right-big
+
+							when 'link-post'
+								.post-wrap
+									.text=item.text
+									a(href=item.href)=item.href
+
+							when 'quote-post'
+								.post-wrap
+									.text=item.text
+									.author=item.author
+
+							when 'aside-post'
+								.post-wrap
+									header=item.title
+									.text=item.text
+
+		.load-more: .big-text-button older posts

@@ -1,0 +1,85 @@
+extends _layout
+
+block page
+	- var page = 'single-post'
+
+block content
+
+	mixin comment
+		li.item
+			.comment
+				img.avatar(src=url['users']+'1.jpg', alt='avatar')
+				.col-wrap
+					.caption
+						span.user-name User-name
+						time / 10 minutes ago
+					.text
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit
+
+
+	section.single-post.post-layout
+		.post-layout-wrap
+			.col-l
+				//POST
+				article.post
+					.slider
+						- for(var i = 0; i < 4; i++)
+							img(src=url['portfolio']+'gallery/1.jpg', alt="work")
+					header.title-h1.title-h1 Heavy Sand - Creative Photography
+					.text
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+						p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+				//COMMENTS
+				section.comments
+					//COMMENTS-TREE
+					header.title-h1 5 Comments
+					ul.comments-tree
+						+comment()
+						ul.reply
+							+comment()
+							ul.reply
+								+comment()
+								ul.reply
+									+comment()
+							ul.reply
+								+comment()
+						ul.reply
+							+comment()
+						+comment()
+					//COMMENTS-FORM
+					- var header = 'Leave a Comment'
+					- var buttonValue = 'Post a Comment'
+					include _include/cform
+
+			.col-r
+				//POST-INFO
+				section.post-info
+					header.title-h1 Post Info
+					ul.icon-sep-list
+						li
+							span.circle-icon.icon-user
+							a(href="#!") premiumlayers
+						li
+							span.circle-icon.icon-heart
+							a(href="#!") 138 likes
+						li
+							span.circle-icon.icon-calendar
+							a(href="#!") 20 june 2014
+						li
+							span.circle-icon.icon-link
+							a(href="#!") https://www.google.com.ua/
+
+				//TAGS
+				section.tags
+					header.title-h1 Tags
+					ul.items
+						each item in ['web design', 'photography', 'development', 'php', 'ecommerce', 'graphic']
+							li.item: a(href="#!")=item
+
+				//ARCHIVES
+				section.archives
+					header.title-h1 Archives
+					ul.list
+						each item in ['December 2013 (24)', 'November 2013 (7)', 'September 2013 (2)', 'March 2013 (22)', 'January 2013 (11)']
+							li: a(href="#!")=item

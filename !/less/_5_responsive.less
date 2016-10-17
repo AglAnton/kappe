@@ -1,0 +1,80 @@
+/**************************************************
+5. RESPONSIVE
+**************************************************/
+@media only screen and (min-width:641px){
+	.mm-button{display:none;}//hide menu button if window width > 640px
+}
+@media only screen and (min-width:1921px){
+	.sidebar-wrap,
+	.sidebar-wrap .bg{width:@sidebarWidth;}
+	.content{
+		float: right;
+		margin-left:0;
+		width:100% - @sidebarWidth;
+	}
+}
+
+@media only screen and (max-width:1680px){
+	.blog .item{width:23%;}
+	.single-work{
+		.related-projects .item{width: 50%;}
+		.project-gallery .item{width: 18%;}
+	}
+	.single-post .comments-tree >.reply .reply{margin-left:0;}
+}
+@media only screen and (max-width:1280px){
+	.portfolio .item{width:33.33%;}
+	.blog .item{width:31.33%;}
+	.about .team .item{width:45.95%;}
+	.single-work{.rHoverInfo()}
+	.single-post .comments-tree .reply{margin-left:0;}
+}
+@media only screen and (max-width:1024px){
+	body{font-size:16px;}
+	.portfolio{.rHoverInfo()}
+	.blog .item{width:48%;}
+	.single-work .related-projects .item{width: 100%;}
+	.contact{
+		padding-top:100px;
+		.contact-button{display:block;}
+		.contact-block{display:none;}
+	}
+}
+@media only screen and (max-width:960px){
+	.post-layout-wrap:after{display:none;}
+	.col-l, .col-r{float:none; width:auto;}
+	.portfolio .item{width:50%;}
+	.about .team .item{width:30.63%;}
+	.single-work .related-projects .item{width: 50%;}
+	.single-post .comments-tree .reply{margin-left: 100px;}
+}
+@media only screen and (max-width:768px){
+	.about .team .item{width:45.95%;}
+}
+@media only screen and (max-width:720px){
+	.blog .item{width:98%;}
+	.single-post .comments-tree .reply{margin-left: 0;}
+}
+@media only screen and (max-width:640px){
+	.blog .item{width:48%;}
+	.about .team .item{width:30.63%;}
+	.single-work .related-projects .item{width: 33.33%;}
+	.single-post .comments-tree .reply{margin-left: 100px;}
+}
+@media only screen and (max-width:520px){
+	.single-work .related-projects .item{width: 50%;}
+}
+@media only screen and (max-width:480px){
+	.about .team .item{width:45.95%;}
+	.single-post .comments-tree .reply{margin-left: 0;}
+}
+@media only screen and (max-width:400px){
+	.portfolio .item{width:100%;}
+	.blog .item{width:98%;}
+}
+@media only screen and (max-width:360px){
+	.single-work .related-projects .item{width: 100%;}
+}
+@media only screen and (max-width:320px){
+	.about .team .item{width:97.3%;}
+}

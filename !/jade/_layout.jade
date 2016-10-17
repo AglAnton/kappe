@@ -1,0 +1,102 @@
+include _!config.jade
+
+doctype html
+//[if IE 7]><html class="ie7 no-js"><![endif]
+//[if IE 8]><html class="ie8 no-js"><![endif]
+//[if (gte IE 9)|!(IE)]><!
+html.no-js
+	//<![endif]
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, user-scalable=no")
+		title #{title}
+		meta(name="description", content="")
+		meta(name="keywords", content="")
+
+		link(rel="shortcut icon", href="favicons/favicon.ico")
+		link(rel="apple-touch-icon", sizes="57x57", href="favicons/apple-touch-icon-57x57.png")
+		link(rel="apple-touch-icon", sizes="114x114", href="favicons/apple-touch-icon-114x114.png")
+		link(rel="apple-touch-icon", sizes="72x72", href="favicons/apple-touch-icon-72x72.png")
+		link(rel="apple-touch-icon", sizes="144x144", href="favicons/apple-touch-icon-144x144.png")
+		link(rel="apple-touch-icon", sizes="60x60", href="favicons/apple-touch-icon-60x60.png")
+		link(rel="apple-touch-icon", sizes="120x120", href="favicons/apple-touch-icon-120x120.png")
+		link(rel="apple-touch-icon", sizes="76x76", href="favicons/apple-touch-icon-76x76.png")
+		link(rel="apple-touch-icon", sizes="152x152", href="favicons/apple-touch-icon-152x152.png")
+		link(rel="icon", type="image/png", href="favicons/favicon-196x196.png", sizes="196x196")
+		link(rel="icon", type="image/png", href="favicons/favicon-160x160.png", sizes="160x160")
+		link(rel="icon", type="image/png", href="favicons/favicon-96x96.png", sizes="96x96")
+		link(rel="icon", type="image/png", href="favicons/favicon-16x16.png", sizes="16x16")
+		link(rel="icon", type="image/png", href="favicons/favicon-32x32.png", sizes="32x32")
+		meta(name="msapplication-TileColor", content="#b91d47")
+		meta(name="msapplication-TileImage", content="favicons/mstile-144x144.png")
+		meta(name="msapplication-config", content="favicons/browserconfig.xml")
+
+		link(rel="stylesheet", href="css/styles.css")
+		link(rel="stylesheet", href="js/plugins/fancybox/jquery.fancybox.css")
+
+		//if lte IE 8
+			script.
+				document.createElement("header");
+				document.createElement("footer");
+				document.createElement("section");
+				document.createElement("article");
+				document.createElement("nav");
+				document.createElement("menu");
+				document.createElement("aside");
+			script(src="js/lib/respond.min.js")
+		//if IE 7
+			link(rel="stylesheet", href="css/fontello-ie7.css")
+			
+		//-replace class 'no-js' with 'js' of the html element (no need if include modernizr)
+			script.
+				document.documentElement.className = document.documentElement.className.replace("no-js","js");
+
+		//MODERNIZER
+		script(src="js/lib/modernizr.min.js")
+
+		//RETINA
+		script(src="js/plugins/picturefill.min.js", async)
+
+		//GOOGLE-FONTS
+		link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Roboto:400,100,300,400italic,700italic,700')
+
+	body
+		//PRELOADER
+		#preloader.preloader
+			script.
+				document.getElementById('preloader').style.display = 'block';
+
+		//MAIN
+		.page-wrap
+			//SIDEBAR
+			include _include/sidebar
+
+			- if (page == 'contact') var cls = 'no-bg'
+				//CONTENT
+				.content#sb-site(class=cls)
+					block content
+
+		- if (page == 'contact')
+			//CONTACT-MAP
+			#contact-map.contact-map
+			//CONTACT-BUTTON
+			#contactButton.contact-button
+				.big-icon-button: span.icon-mail
+
+		- if (page == 'index' || page == 'blog')
+			//INFO-BUTTON
+			include _include/info-button
+
+		//SCRIPTS
+		- if (page == 'contact')
+			script(src="https://maps.googleapis.com/maps/api/js?sensor=false")
+
+		script(src="js/lib/jquery.min.js")
+		script(src="js/lib/jquery.mobile.touch.min.js")
+		script(src="js/plugins/jquery.shuffle.min.js")
+		script(src="js/plugins/jquery.hoverdir.min.js")
+		script(src="js/plugins/slidebars.min.js")
+		script(src="js/plugins/jquery.bxslider.min.js")
+		script(src="js/plugins/fancybox/jquery.fancybox.min.js")
+		script(src="js/plugins/jqbar.min.js")
+		script(src="js/scripts.min.js")

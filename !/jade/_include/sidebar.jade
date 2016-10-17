@@ -1,0 +1,43 @@
+#sb-slidebar.sb-slidebar.sb-left.sidebar-wrap
+	.bg
+	.sidebar
+
+		//LOGO
+		a.logo(href="index.html")
+			div(data-picture, data-alt='logo')
+				div(data-src=url.img+'logo.png')
+				div(data-src=url.img+'logo@2x.png', data-media="(min-device-pixel-ratio: 1.5)")
+				noscript
+					img(src=url.img+'logo.png', alt="logo")
+
+		//NAV
+		nav.nav
+			each item in nav
+				- var active = (page === item.page)? 'active' : ''
+				a(href=item.href, class=active)=item.title
+
+		if page === "index"
+			//FILTER
+			.filter
+				header Filter
+					span.icon-th-large
+				a.active(href="#!", data-filter-value='all') All Works
+				- each item in filter
+					a(href="#!", data-filter-value=item.id)=item.name
+
+		//SOCIAL-BUTTONS
+		.social-buttons
+			a.s-icon.i-flickr(href="#!")
+			a.s-icon.i-googleplus(href="#!")
+			a.s-icon.i-twitter(href="#!")
+			a.s-icon.i-pinterest(href="#!")
+			a.s-icon.i-dribbble(href="#!")
+			a.s-icon.i-behance(href="#!")
+			a.s-icon.i-facebook(href="#!")
+
+		//COPYRIGHT
+		.copyright © 2014 Kappe, All Rights Recerved
+
+//MOBILE-MENU-BUTTON
+#mmButton.mm-button
+	.big-icon-button: span.icon-menu

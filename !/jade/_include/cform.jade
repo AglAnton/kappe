@@ -1,0 +1,16 @@
+header.title-h1 #{header}
+form.comments-form(action="", method="post")
+	.fields-wrap
+		.field-wrap
+			.icon: span.circle-icon.icon-user
+			.field: input(type="text", name="name", value="Name")
+		.field-wrap
+			.icon: span.circle-icon.icon-mail
+			.field: input(type="email", name="email", value="e-mail")
+		.field-wrap
+			.icon: span.circle-icon.icon-link
+			.field: input(type="url", name="url", value="website")
+	.fields-wrap
+		.field-wrap
+			.field: textarea(name="message") Message
+		button.big-text-button(type="submit") #{buttonValue}
